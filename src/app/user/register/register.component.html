@@ -1,0 +1,35 @@
+
+<app-navbar></app-navbar>
+<br>
+  <br>
+  <br>
+  <br>
+    <form>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="container">
+          <h1>Sign Up</h1>
+         
+      
+              <label for="username"><b>Username</b></label>
+            <input formControlName="username"type="text" name="username" placeholder="Enter Username" required>
+          <label for="email"><b>Email</b></label>
+          <input  formControlName="email" type="text" placeholder="Enter Email" name="email" required>
+          
+          <label for="psw"><b>Password</b></label>
+          <input formControlName="password"type="password" placeholder="Enter Password" name="psw" required>
+      
+                  <label for="phone"><b>Phone Number</b></label>
+            <br>
+          
+           <input formControlName="phno" type="phone" name="phone" placeholder="812345678" required>
+    
+          <div class="clearfix">
+      
+            <button type="submit" class="btn">Sign Up</button>
+            <p> Already Have an account?<a routerLink="userlogin">Sign In</a>
+          </div>
+        </div>
+      </form>
+      </form>
+      
+

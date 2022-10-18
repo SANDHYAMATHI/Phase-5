@@ -1,0 +1,89 @@
+<nav class="navbar navbar-light bg-primary"> 
+  <div class="container-fluid">
+
+  <h3 style="color: aliceblue;">  FOOD DETAILS</h3> 
+  <div class="d-flex"> 
+      <button (click)="clickAddFood()" type="button" class="btn btn-primary" data-bs-toggle="modal" 
+      data-bs-target="#exampleModal"class="btn btn-success">Add FOOD</button>
+     <button  type="button" class="btn btn-primary" data-bs-toggle="modal" 
+      data-bs-target="#exampleModal"class="btn btn-success"><a style="text-decoration: none;"routerLink="/adminregister">Add Admin</a></button>
+
+  
+  </div>
+  </div>
+  </nav> 
+<table class="table mt-3">  
+<thead>
+    <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Food Name</th>
+    <th scope="col">Cuisine Type</th> 
+    <th scope="col">Description</th>
+    <th scope="col">Offers</th>
+    <th scope="col">Price</th>
+    <th scope="col">Status</th>
+    <th scope="col">Action</th>
+    </tr>
+</thead>
+<tbody>
+<tr *ngFor="let row of foodData">
+<td>{{row.id}}</td>
+<td>{{row.foodname}}</td>
+<td>{{row.cuisinetype}}</td>
+<td>{{row.description}}</td>
+<td>{{row.offers}}</td>
+<td>{{row.price}}</td>
+<td>{{row.status}}</td>
+    <td> 
+    <button (click)="onEdit(row)" style="color:rgb(186, 241, 245)" type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+   <button (click)="deleteFood(row)" class="btn btn-danger mx-3">Delete</button></td>
+
+    
+</tr>
+</tbody>
+</table>
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Item Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Food Name</label>
+                  <input type="text" formControlName="foodname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Cuisine Type</label>
+                  <input type="text" formControlName="cuisinetype" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Description</label>
+                    <input type="email" formControlName="description"class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Offers</label>
+                    <input type="email" formControlName="offers"class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Price</label>
+                    <input type="number" formControlName="price"class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Status</label>
+                    <input type="email" formControlName="status"class="form-control" id="exampleInputPassword1">
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" *ngIf="showAdd" (click)="postFoodDetails()" class="btn btn-primary">Add</button>
+          <button type="button" *ngIf="showUpdate" (click)="updateFoodDetails()" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
